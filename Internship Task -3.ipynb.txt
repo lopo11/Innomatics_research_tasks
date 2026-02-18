@@ -1,0 +1,238 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "d79c1c03-65b0-4339-a940-9330eb31fd58",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Top Performers Eligible for Bonus: Ravi, Kiran(Score: 92 )\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Employee Performance Bonus Eligibility\n",
+    "\n",
+    "employees = {\n",
+    "    \"Ravi\": 92,\n",
+    "    \"Anita\": 88,\n",
+    "    \"Kiran\": 92,\n",
+    "    \"Suresh\": 85\n",
+    "}\n",
+    "\n",
+    "# Find highest score\n",
+    "highest = 0\n",
+    "for s in employees.values():\n",
+    "    if s > highest:\n",
+    "        highest = s\n",
+    "\n",
+    "# check who got that score\n",
+    "names = []\n",
+    "for n in employees:\n",
+    "    if employees[n] == highest:\n",
+    "        names.append(n)\n",
+    "\n",
+    "print(\"Top Performers Eligible for Bonus:\", end=\" \")\n",
+    "for i in range(len(names)):\n",
+    "    if i == len(names)-1:\n",
+    "        print(names[i], end=\"\")\n",
+    "    else:\n",
+    "        print(names[i], end=\", \")\n",
+    "\n",
+    "print(\"(Score:\", highest, \")\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "d4e9d167-8567-495c-ab37-6407a35f6c1b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'buy': 2, 'phone': 2}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Search Query Keyword Analysis\n",
+    "s = \"Buy mobile phone buy phone online\"\n",
+    "s = s.lower()\n",
+    "words = s.split()\n",
+    "count = {}\n",
+    "\n",
+    "for w in words:\n",
+    "    if w in count:\n",
+    "        count[w] += 1\n",
+    "    else:\n",
+    "        count[w] = 1\n",
+    "result = {}\n",
+    "for k in count:\n",
+    "    if count[k] > 1:\n",
+    "        result[k] = count[k]\n",
+    "print(result)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "1de38dd6-347c-41e8-82d8-2c18df3f93e9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Valid Sensor Readings (Hour, Value):\n",
+      "[(1, 4), (3, 8), (4, 10), (5, 12)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Sensor Data Validation\n",
+    "sensor_readings = [3, 4, 7, 8, 10, 12, 5]\n",
+    "ans = []\n",
+    "\n",
+    "for i in range(len(sensor_readings)):\n",
+    "    if sensor_readings[i] % 2 == 0:  \n",
+    "        ans.append((i, sensor_readings[i]))\n",
+    "\n",
+    "print(\"Valid Sensor Readings (Hour, Value):\")\n",
+    "print(ans)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "0ad1bf3b-a4f2-4d7f-bacb-9d97d91b1d4d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gmail.com: 60%\n",
+      "yahoo.com: 40%\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Email Domain Usage Analysis\n",
+    "emails = [\n",
+    "    \"ravi@gmail.com\",\n",
+    "    \"anita@yahoo.com\",\n",
+    "    \"kiran@gmail.com\",\n",
+    "    \"suresh@gmail.com\",\n",
+    "    \"meena@yahoo.com\"\n",
+    "]\n",
+    "\n",
+    "domain_count = {}\n",
+    "for e in emails:\n",
+    "    domain = e.split(\"@\")[1]\n",
+    "\n",
+    "    if domain in domain_count:\n",
+    "        domain_count[domain] += 1\n",
+    "    else:\n",
+    "        domain_count[domain] = 1\n",
+    "        \n",
+    "total = len(emails)\n",
+    "\n",
+    "for d in domain_count:\n",
+    "    percent = domain_count[d] * 100 / total\n",
+    "    print(d + \":\", str(int(percent)) + \"%\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "99128cef-b40e-42a7-a78d-8aacc2080750",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Day 6 : 3000\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Sales Spike Detection\n",
+    "sales = [1200, 1500, 900, 2200, 1400, 3000]\n",
+    "avg = sum(sales) / len(sales)\n",
+    "\n",
+    "limit = avg * 1.3  \n",
+    "i = 0\n",
+    "while i < len(sales):\n",
+    "    if sales[i] > limit:\n",
+    "        print(\"Day\", i+1, \":\", sales[i])\n",
+    "    i += 1\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "a660855c-67e7-4968-82ae-e89d9123aa9e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "user1 → 3 times\n",
+      "user1 → 3 times\n",
+      "user3 → 2 times\n",
+      "user1 → 3 times\n",
+      "user3 → 2 times\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Duplicate User ID Detection\n",
+    "user_ids = [\"user1\", \"user2\", \"user1\", \"user3\", \"user1\", \"user3\"]\n",
+    "\n",
+    "for id in user_ids:\n",
+    "    if user_ids.count(id) > 1:\n",
+    "        if user_ids.index(id) == user_ids.index(id):\n",
+    "            if user_ids.index(id) == user_ids.index(id):\n",
+    "                print(id, \"→\", user_ids.count(id), \"times\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cc494371-4b35-48d7-b650-19e8cd950d5a",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
