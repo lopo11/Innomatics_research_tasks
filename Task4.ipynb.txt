@@ -1,0 +1,336 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Problem 1: Mobile Recharge Validation System"
+      ],
+      "metadata": {
+        "id": "-xAd1X-8nhJ4"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def validate_recharge(amount):\n",
+        "    valid_plans = [199, 299, 399, 599]\n",
+        "\n",
+        "    if amount < 50:\n",
+        "        return False\n",
+        "\n",
+        "    if amount not in valid_plans:\n",
+        "        return False\n",
+        "\n",
+        "    return True\n",
+        "\n",
+        "\n",
+        "while True:\n",
+        "    amount = int(input(\"Enter recharge amount: \"))\n",
+        "\n",
+        "    if validate_recharge(amount):\n",
+        "        print(\"Recharge Successful ✅\")\n",
+        "        break\n",
+        "    else:\n",
+        "        print(\"Invalid recharge. Try again.\\n\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7AFIDSEunqZ0",
+        "outputId": "7c450635-8a31-4616-90ed-6e8e03dc35a7"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter recharge amount: 60\n",
+            "Invalid recharge. Try again.\n",
+            "\n",
+            "Enter recharge amount: 200\n",
+            "Invalid recharge. Try again.\n",
+            "\n",
+            "Enter recharge amount: 199\n",
+            "Recharge Successful ✅\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Problem 2: Inventory Reorder Alert"
+      ],
+      "metadata": {
+        "id": "oQnIpkGQnxaJ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def check_stock(products):\n",
+        "    for item in products:\n",
+        "        quantity = products[item]\n",
+        "\n",
+        "        if quantity < 15:\n",
+        "            print(item, \"→ Reorder Alert\")\n",
+        "        else:\n",
+        "            print(item, \"→ Stock OK\")\n",
+        "\n",
+        "\n",
+        "inventory = {\n",
+        "    \"Rice\": 20,\n",
+        "    \"Oil\": 10,\n",
+        "    \"Sugar\": 5,\n",
+        "    \"Soap\": 25\n",
+        "}\n",
+        "\n",
+        "check_stock(inventory)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tP9vml0BoGmH",
+        "outputId": "f01f6c59-42c9-4b0f-9e6d-8cefe6cb1121"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Rice → Stock OK\n",
+            "Oil → Reorder Alert\n",
+            "Sugar → Reorder Alert\n",
+            "Soap → Stock OK\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Problem 3: Student Result Processing"
+      ],
+      "metadata": {
+        "id": "ROj06aE_oMYy"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def check_result(marks):\n",
+        "    total = 0\n",
+        "\n",
+        "    for mark in marks:\n",
+        "        total = total + mark\n",
+        "\n",
+        "    average = total / len(marks)\n",
+        "\n",
+        "    if average >= 50:\n",
+        "        return \"Pass\"\n",
+        "    else:\n",
+        "        return \"Fail\"\n",
+        "\n",
+        "\n",
+        "marks_list = [60, 45, 70, 55]\n",
+        "result = check_result(marks_list)\n",
+        "\n",
+        "print(\"Final Result:\", result)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qaVINV1woScU",
+        "outputId": "802bf75a-8677-4214-e7e5-8202cd1d0ca2"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Final Result: Pass\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Problem 4: Cab Fare Estimator"
+      ],
+      "metadata": {
+        "id": "7kyxp30JoW-8"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate_fare(distance, peak):\n",
+        "    fare = 50 + (distance * 12)\n",
+        "\n",
+        "    if peak == \"yes\":\n",
+        "        fare = fare + (fare * 0.25)\n",
+        "\n",
+        "    return fare\n",
+        "\n",
+        "\n",
+        "while True:\n",
+        "    km = float(input(\"Enter distance in km: \"))\n",
+        "    peak_time = input(\"Peak hour? (yes/no): \")\n",
+        "\n",
+        "    total = calculate_fare(km, peak_time)\n",
+        "\n",
+        "    print(\"Total Fare:\", total)\n",
+        "\n",
+        "    again = input(\"Do you want to calculate again? (yes/no): \")\n",
+        "    if again != \"yes\":\n",
+        "        break"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "L1k5NFEwoasY",
+        "outputId": "c48d02ec-f307-4c42-dafb-c2da8b670cea"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Enter distance in km: 7\n",
+            "Peak hour? (yes/no): yes\n",
+            "Total Fare: 167.5\n",
+            "Do you want to calculate again? (yes/no): no\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Problem 5: Attendance Eligibility Checker"
+      ],
+      "metadata": {
+        "id": "7lIG2KIhogD0"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def check_attendance(att_list):\n",
+        "    present = 0\n",
+        "\n",
+        "    for day in att_list:\n",
+        "        if day == \"P\":\n",
+        "            present = present + 1\n",
+        "\n",
+        "    percentage = (present / len(att_list)) * 100\n",
+        "\n",
+        "    if percentage >= 75:\n",
+        "        return \"Eligible\"\n",
+        "    else:\n",
+        "        return \"Not Eligible\"\n",
+        "\n",
+        "\n",
+        "attendance = [\"P\", \"P\", \"A\", \"P\", \"P\", \"A\", \"P\", \"P\"]\n",
+        "\n",
+        "status = check_attendance(attendance)\n",
+        "\n",
+        "print(\"Attendance Status:\", status)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "N6f1oOreolky",
+        "outputId": "6e481297-f323-49a7-e2a5-e2ff03efc1f3"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Attendance Status: Eligible\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Problem 6: Password Strength Checker"
+      ],
+      "metadata": {
+        "id": "9jc5BHWqopq-"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def check_password(password):\n",
+        "    if len(password) < 8:\n",
+        "        return \"Weak Password\"\n",
+        "\n",
+        "    has_digit = False\n",
+        "    has_special = False\n",
+        "\n",
+        "    for ch in password:\n",
+        "        if ch.isdigit():\n",
+        "            has_digit = True\n",
+        "\n",
+        "        if ch in \"@#$\":\n",
+        "            has_special = True\n",
+        "\n",
+        "    if has_digit and has_special:\n",
+        "        return \"Strong Password\"\n",
+        "    else:\n",
+        "        return \"Weak Password\"\n",
+        "\n",
+        "\n",
+        "pwd = input(\"Enter password: \")\n",
+        "print(check_password(pwd))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "nqVhYgXGowlJ",
+        "outputId": "364a895d-eb87-438a-a71e-331a777d1909"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter password: kiran\n",
+            "Weak Password\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
